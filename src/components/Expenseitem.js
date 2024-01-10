@@ -1,17 +1,13 @@
 import './Expenseitem.css'
 
-function Expenseitem() {
-    const expenseDate = new Date(2021, 3, 15)
-    const expenseDescription = 'Car Insurance'
-    const expenseAmount = '$294.67'
-    const locationOfExpenditure = 'New York'
+function Expenseitem(props) {
     return (
         <div className='expense-item'>
-            <div> {expenseDate.toISOString()} </div>
+            <div> {props.expense.expenseDate.toISOString()} </div>
             <div className='expense-item__description'>
-                <h2>{expenseDescription}</h2>
-                <h2>{locationOfExpenditure}</h2>
-                <div className='expense-item__price'>{expenseAmount}</div>
+                <h2>{props.expense.expenseDescription}</h2>
+                <h2>{props.expense.locationOfExpenditure}</h2>
+                <div className='expense-item__price'>{props.expense.expenseAmount}</div>
             </div>
         </div>
     )
