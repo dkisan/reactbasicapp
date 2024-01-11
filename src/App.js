@@ -1,3 +1,4 @@
+import Card from "./components/Card";
 import Expenseitem from "./components/Expenseitem";
 
 function App() {
@@ -28,12 +29,14 @@ function App() {
     }
   ]
   return (
-    <div>
+    <Card>
       <h2>Expense Item</h2>
-      {expenses.map(exp => {
-        return <Expenseitem expense={exp} />
-      })}
-    </div>
+      <Card className='expenses'>
+        {expenses.map(exp => {
+          return <Expenseitem expense={exp} />
+        })}
+      </Card>
+    </Card>
   );
 }
 
