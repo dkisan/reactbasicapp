@@ -1,7 +1,7 @@
-import Card from "./components/Card";
-import Expenseitem from "./components/Expenseitem";
+import Card from "./components/Ui/Card";
+import Expenseitem from "./components/Expenses/Expenseitem";
 
-function App() {
+const App = () => {
   const expenses = [
     {
       expenseDate: new Date(2021, 3, 15),

@@ -1,6 +1,6 @@
 import './Expenseitem.css'
 
-function ExpenseDetails(props) {
+const ExpenseDetails = (props) => {
     return (
         <div className='expense-item__description'>
             <h2>{props.description}</h2>
