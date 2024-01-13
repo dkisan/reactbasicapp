@@ -56,11 +56,11 @@ const App = () => {
   return (
     <Card>
       <h2>Expense Item</h2>
-      <ExpenseFilter selected={filteredyear} onChangeFilter={filterchangehandler} />
       <ExpenseForm addExpenseHandler={addExpenseHandler} />
       <Card className='expenses'>
+        <ExpenseFilter selected={filteredyear} onChangeFilter={filterchangehandler} />
         {expenses.map(exp => {
-          return <Expenseitem expense={exp} />
+          return <Expenseitem expense={exp} key={exp.id}/>
         })}
       </Card>
     </Card>
