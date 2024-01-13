@@ -55,6 +55,7 @@ const ExpenseForm = (props) => {
             enteredAmount: '',
             enteredDate: ''
         })
+        props.formHideHandler()
     }
 
     return (
@@ -71,6 +72,9 @@ const ExpenseForm = (props) => {
                 <div className="new-expense__controls">
                     <label>Date</label>
                     <input id='expensedateid' type="Date" value={userInput.enteredDate} onChange={dateHandler} />
+                </div>
+                <div className="new-expense__actions">
+                    <button type='submit' onClick={props.formHideHandler}>Cancel</button>
                 </div>
                 <div className="new-expense__actions">
                     <button type='submit'>Add Expense</button>

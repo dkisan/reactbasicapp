@@ -57,10 +57,27 @@ const App = () => {
     return e.expenseDate.getFullYear().toString() === filteredyear
   })
 
+  const [isForm, setIsForm] = useState(false)
+  const formVisibleHandler = () => {
+    setIsForm((formstate) => {
+      return true
+    })
+  }
+  const formHideHandler = () => {
+    setIsForm((formstate) => {
+      return false
+    })
+  }
+
   return (
     <Card>
       <h2>Expense Item</h2>
-      <ExpenseForm addExpenseHandler={addExpenseHandler} />
+      {!isForm &&
+        <div className='new-expense'>
+          <button onClick={formVisibleHandler}>Add Expense</button>
+        </div>
+      }
+      {isForm && <ExpenseForm addExpenseHandler={addExpenseHandler} formHideHandler={formHideHandler} />}
       <Card className='expenses'>
         <ExpenseFilter selected={filteredyear} onChangeFilter={filterchangehandler} />
         {filteredExpense.length === 0 && <p>No expenses</p>}
