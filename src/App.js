@@ -53,7 +53,7 @@ const App = () => {
     setFilteredYear(selectedyear)
   }
 
-  const filteredExpense = expenses.filter(e=>{
+  const filteredExpense = expenses.filter(e => {
     return e.expenseDate.getFullYear().toString() === filteredyear
   })
 
@@ -63,8 +63,10 @@ const App = () => {
       <ExpenseForm addExpenseHandler={addExpenseHandler} />
       <Card className='expenses'>
         <ExpenseFilter selected={filteredyear} onChangeFilter={filterchangehandler} />
-        {filteredExpense.map(exp => {
-          return <Expenseitem expense={exp} key={exp.id}/>
+        {filteredExpense.length === 0 && <p>No expenses</p>}
+        {filteredExpense.length === 1 && <p>Please Add More Expenses</p>}
+        {filteredExpense.length > 0 && filteredExpense.map(exp => {
+          return <Expenseitem expense={exp} key={exp.id} />
         })}
       </Card>
     </Card>
