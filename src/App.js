@@ -2,8 +2,10 @@ import Card from "./components/Ui/Card";
 import Expenseitem from "./components/Expenses/Expenseitem";
 import ExpenseForm from "./components/Expenses/ExpenseForm";
 import { useState } from "react";
+import ExpenseFilter from "./components/Expenses/ExpenseFilter";
 
 const App = () => {
+  const [filteredyear, setFilteredYear] = useState('2020')
   const [expenses, setExpenses] = useState([
     {
       id: '1',
@@ -34,22 +36,27 @@ const App = () => {
       locationOfExpenditure: 'Australia'
     }
   ])
-  console.log(expenses)
   const addExpenseHandler = (expense) => {
     setExpenses((prevState) => {
       return [...prevState,
       {
         expenseDate: new Date(expense.enteredDate),
         expenseDescription: expense.enteredTitle,
-        expenseAmount: '$'+ expense.enteredAmount,
+        expenseAmount: '$' + expense.enteredAmount,
         locationOfExpenditure: 'Australia',
         id: Math.random().toString()
       }]
     })
   }
+
+  const filterchangehandler = (selectedyear) => {
+    setFilteredYear(selectedyear)
+  }
+
   return (
     <Card>
       <h2>Expense Item</h2>
+      <ExpenseFilter selected={filteredyear} onChangeFilter={filterchangehandler} />
       <ExpenseForm addExpenseHandler={addExpenseHandler} />
       <Card className='expenses'>
         {expenses.map(exp => {
