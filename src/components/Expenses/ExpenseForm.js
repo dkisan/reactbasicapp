@@ -46,9 +46,15 @@ const ExpenseForm = () => {
             }
         })
     }
+
+    const formHandler = (event) => {
+        event.preventDefault()
+        console.log(userInput)
+    }
+
     return (
         <div className='new-expense'>
-            <form className="new-expense__controls">
+            <form className="new-expense__controls" onSubmit={formHandler}>
                 <div className="new-expense__controls">
                     <label>Expense Title</label>
                     <input id='expensetitleid' type="text" onChange={titleHandler} />
